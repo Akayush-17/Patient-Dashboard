@@ -1,21 +1,23 @@
-
 import "./App.css";
-import PatientDashboard from "./components/PatientDashboard";
-import Sidebar from "./components/Sidebar";
-
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import Dashboard from "./components/Dashboard";
+import React from "react";
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   return (
     <>
-      <div className="flex w-full">
-        <div className="w-1/5">
-
-        <Sidebar />
-        </div>
-        <div className="w-4/5 bg-gray-200 ">
-          <PatientDashboard/>
-        </div>
-
+      <Router>
+      <div className="w-full">
+        <Routes>
+          <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/dashboard" element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" />} />
+          <Route path="*" element={<Navigate to="/login" />} />
+        </Routes>
       </div>
+    </Router>
     </>
   );
 }

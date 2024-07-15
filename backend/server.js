@@ -1,23 +1,40 @@
 const express = require('express');
-const connectDB = require('./config/db');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
+const connectDB = require('./config/db');
+const bodyParser = require('body-parser');
+const authRoutes = require('./routes/authRoutes');
+const interactionRoutes = require('./routes/InteractionRoutes');
+const doctorRoutes = require('./routes/doctorRoutes');
+const patientRoutes = require('./routes/patientRoutes'); // Add this line
 require('dotenv').config();
 
 const app = express();
 
+// Connect to MongoDB
+connectDB();
+
+// Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.json());
+
 app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    store: MongoStore.create({ mongoUrl: process.env.MONGO_URI })
-  }));
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  store: MongoStore.create({ mongoUrl: process.env.MONGO_URI })
+}));
+
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api', interactionRoutes);
+app.use('/api/doctors', doctorRoutes);
+app.use('/api/patients', patientRoutes); // Add this line
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-  });
-
-connectDB();
-
-
+  console.log(`Server is running on port ${PORT}`);
+});
