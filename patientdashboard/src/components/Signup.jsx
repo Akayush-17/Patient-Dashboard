@@ -30,7 +30,7 @@ const Signup = () => {
             } else {
                 const errorData =await response.json();
                 setError(errorData.message || "Signup failed. Please Try again");
-                alert("error")
+               
             }
         } catch (error){
             setError("Signup failed. Please Try again");

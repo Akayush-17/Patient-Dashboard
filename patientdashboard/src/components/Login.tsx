@@ -1,17 +1,40 @@
-import React from "react";
-import loginimg from '../assets/loginimage.png'
+import React, { useEffect, useState } from "react";
+import loginimg from "../assets/loginimage.png";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ setIsLoggedIn }) => {
-    const navigate = useNavigate();
 
-    const handleLogin = () => {
+const Login = ({ setIsLoggedIn }) => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    setError("");
+    try {
+      const response = await fetch("http://localhost:3000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      if (response.ok) {
         setIsLoggedIn(true);
         navigate("/dashboard");
-      };
-    const handleSignup = () => {
-        navigate("/signup");
-      };
+      } else {
+        const errorData = await response.json();
+        setError(errorData.message || "Invalid Credentials");
+      }
+    } catch (error) {
+      setError(error.message || "Invalid Credentials");
+    }
+  };
+
+  const handleSignup = () => {
+    navigate("/signup");
+  };
   return (
     <section className="bg-gray-100 min-h-screen flex box-border justify-center items-center">
       <div className="bg-[#dfa674] rounded-2xl flex max-w-3xl p-5 items-center">
@@ -21,12 +44,14 @@ const Login = ({ setIsLoggedIn }) => {
             If you already a member, easily log in now.
           </p>
 
-          <form action="" className="flex flex-col gap-4">
+          <form onSubmit={handleLogin} className="flex flex-col gap-4">
             <input
               className="p-2 mt-8 rounded-xl border"
               type="email"
               name="email"
               placeholder="Email"
+              value={email}
+              onChange={(e)=> setEmail(e.target.value)}
             />
             <div className="relative">
               <input
@@ -35,6 +60,8 @@ const Login = ({ setIsLoggedIn }) => {
                 name="password"
                 id="password"
                 placeholder="Password"
+                value={password}
+                onChange={(e)=> setPassword(e.target.value)}
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -61,7 +88,7 @@ const Login = ({ setIsLoggedIn }) => {
                 <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"></path>
               </svg>
             </div>
-            <button onClick={handleLogin}
+            <button
               className="bg-[#002D74] text-white py-2 rounded-xl hover:scale-105 duration-300 hover:bg-[#206ab1] font-medium"
               type="submit"
             >
@@ -71,7 +98,10 @@ const Login = ({ setIsLoggedIn }) => {
 
           <div className="mt-4 text-sm flex flex-col justify-between items-center container-mr">
             <p className="mr-3 md:mr-0 mb-3">If you don't have an account?</p>
-            <button onClick={handleSignup} className="hover:border register text-white bg-[#002D74] hover:bg-[#206ab1] rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300 w-full">
+            <button
+              onClick={handleSignup}
+              className="hover:border register text-white bg-[#002D74] hover:bg-[#206ab1] rounded-xl py-2 px-5 hover:scale-110 hover:bg-[#002c7424] font-semibold duration-300 w-full"
+            >
               Register
             </button>
           </div>
