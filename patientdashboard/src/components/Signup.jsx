@@ -1,16 +1,41 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import signupimg from '../assets/signup.png'
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
     const navigate = useNavigate();
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
 
 
     const handleLogin =() => {
         navigate('/login')
     }
-    const handleSignup = () => {
-        navigate("/login");
+    const handleSignup = async (event) => {
+        event.preventDefault();
+        setError("");
+        try {
+            const response =await fetch("http://localhost:3000/api/auth/register", {
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json",
+                },
+                body: JSON.stringify({name, email, password}),
+            });
+            if (response.ok){
+                navigate("/login");
+            } else {
+                const errorData =await response.json();
+                setError(errorData.message || "Signup failed. Please Try again");
+                alert("error")
+            }
+        } catch (error){
+            setError("Signup failed. Please Try again");
+        }
+       
       };
   return (
     <section className="bg-gray-100 min-h-screen flex box-border justify-center items-center">
@@ -21,18 +46,22 @@ const Signup = () => {
             Create an account to enjoy our services.
           </p>
 
-          <form action="" className="flex flex-col gap-4">
+          <form onSubmit={handleSignup} className="flex flex-col gap-4">
             <input
               className="p-2 mt-8 rounded-xl border"
               type="text"
               name="name"
               placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
             <input
               className="p-2 mt-4 rounded-xl border"
               type="email"
               name="email"
               placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <div className="relative">
               <input
@@ -41,6 +70,8 @@ const Signup = () => {
                 name="password"
                 id="password"
                 placeholder="Password"
+                value={password}
+                onChange={(e)=> setPassword(e.target.value)}
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +98,7 @@ const Signup = () => {
                 <path d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829l-2.83-2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12-.708.708z"></path>
               </svg>
             </div>
-            <button onClick={handleSignup}
+            <button 
               className="bg-[#002D74] text-white py-2 rounded-xl hover:scale-105 duration-300 hover:bg-[#206ab1] font-medium"
               type="submit"
             >
