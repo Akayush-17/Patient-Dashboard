@@ -5,11 +5,16 @@ import Instructions from "../assets/record-square-svgrepo-com.svg";
 import ChatHistory from "../assets/chat-round-line-svgrepo-com.svg";
 import RightArrow from "../assets/right-arrow-backup-2-svgrepo-com.svg";
 
-const Sidebar = ({setShowProfile}) => {
+
+const Sidebar = ({setShowProfile, setShowDoctors}) => {
 
   const handleShowProfile = () => {
     setShowProfile(prevState => !prevState);
   };
+
+  const handleDoctorShow = () => {
+    setShowDoctors(prevState => !prevState);
+  }
 
   return (
     <div className=" bg-gradient-to-t from-[#7b27eb] to-[#5616f5] h-[100vh] py-6 ">
@@ -27,7 +32,7 @@ const Sidebar = ({setShowProfile}) => {
             <img src={RightArrow} alt="right arrow" />
           </div>
         </div>
-        <div className=" flex gap-3 justify-between items-center cursor-pointer hover:bg-[#4210c0] px-8 py-3">
+        <div className=" flex gap-3 justify-between items-center cursor-pointer hover:bg-[#4210c0] px-8 py-3" onClick={handleDoctorShow}>
           <div className="flex gap-3 justify-center items-center">
             <img src={Doctor} alt="icon" />
             <h3>Doctors</h3>
