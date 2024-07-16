@@ -6,14 +6,23 @@ import ChatHistory from "../assets/chat-round-line-svgrepo-com.svg";
 import RightArrow from "../assets/right-arrow-backup-2-svgrepo-com.svg";
 
 
-const Sidebar = ({setShowProfile, setShowDoctors}) => {
+const Sidebar = ({setShowProfile, setShowDoctors, setShowInteraction}) => {
 
   const handleShowProfile = () => {
     setShowProfile(prevState => !prevState);
+    setShowDoctors(false);
+    setShowInteraction(false);
   };
 
   const handleDoctorShow = () => {
     setShowDoctors(prevState => !prevState);
+    setShowProfile(false)
+    setShowInteraction(false);
+  }
+  const handleInteractionShow = () => {
+    setShowInteraction(prevState => !prevState);
+    setShowDoctors(false);
+    setShowProfile(false)
   }
 
   return (
@@ -41,10 +50,10 @@ const Sidebar = ({setShowProfile, setShowDoctors}) => {
             <img src={RightArrow} alt="right arrow" />
           </div>
         </div>
-        <div className=" flex gap-3 justify-between items-center cursor-pointer hover:bg-[#4210c0] px-8 py-3">
+        <div className=" flex gap-3 justify-between items-center cursor-pointer hover:bg-[#4210c0] px-8 py-3" onClick={handleInteractionShow}>
           <div className="flex gap-3 justify-center items-center">
             <img src={Instructions} alt="icon" />
-            <h3>Instructions</h3>
+            <h3>Interactions</h3>
           </div>
           <div>
             <img src={RightArrow} alt="right arrow" />

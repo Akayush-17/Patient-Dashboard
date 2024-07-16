@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-
-const UserProfile = ({ token }) => {
+import Close from "../assets/align-right-svgrepo-com.svg";
+const UserProfile = ({ token, setShowProfile }) => {
   const [profile, setProfile] = useState(null);
   console.log(token);
 
@@ -30,10 +30,18 @@ const UserProfile = ({ token }) => {
   if (!token) {
     return <p>Please log in to view your profile</p>;
   }
+  const handleHideProfile = () => {
+    setShowProfile(false);
+  };
 
   return (
     <div className="bg-white h-full ">
-      <h1>Dashboard</h1>
+      <div className="flex justify-between items-center">
+        <h1>Dashboard</h1>
+        <div className=" cursor-pointer" onClick={handleHideProfile}>
+          <img src={Close} alt="close" />
+        </div>
+      </div>
       {profile ? (
         <div>
           <p>Welcome, {profile.name}!</p>

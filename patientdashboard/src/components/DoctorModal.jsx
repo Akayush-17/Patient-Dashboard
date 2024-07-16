@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-
-const DoctorModal = ({ token }) => {
+import Close from '../assets/align-right-svgrepo-com.svg'
+const DoctorModal = ({ token, setShowDoctors }) => {
   const [profile, setProfile] = useState(null);
-  console.log(token)
+  console.log(token);
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -31,9 +31,18 @@ const DoctorModal = ({ token }) => {
     return <p>Please log in to view Linked Doctors</p>;
   }
 
+  const handleHideDoctor = () => {
+    setShowDoctors(false);
+  };
+
   return (
     <div className="bg-white h-full ">
-      <h1>Linked Doctors</h1>
+      <div className="flex justify-between items-center">
+        <h1>Linked Doctors</h1>
+        <div className=" cursor-pointer" onClick={handleHideDoctor}>
+        <img src={Close} alt="close"/>
+        </div>
+      </div>
       {profile ? (
         <div>
           {profile.linkedDoctors.length > 0 ? (
