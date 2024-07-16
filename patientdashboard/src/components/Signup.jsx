@@ -26,6 +26,7 @@ const Signup = () => {
                 body: JSON.stringify({name, email, password}),
             });
             if (response.ok){
+                
                 navigate("/login");
             } else {
                 const errorData =await response.json();

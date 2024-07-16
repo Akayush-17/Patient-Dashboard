@@ -5,24 +5,29 @@ import Instructions from "../assets/record-square-svgrepo-com.svg";
 import ChatHistory from "../assets/chat-round-line-svgrepo-com.svg";
 import RightArrow from "../assets/right-arrow-backup-2-svgrepo-com.svg";
 
-const Sidebar = () => {
+const Sidebar = ({setShowProfile}) => {
+
+  const handleShowProfile = () => {
+    setShowProfile(prevState => !prevState);
+  };
+
   return (
-    <div className=" bg-gradient-to-t from-[#7b27eb] to-[#5616f5] h-[100vh] py-6 px-8">
+    <div className=" bg-gradient-to-t from-[#7b27eb] to-[#5616f5] h-[100vh] py-6 ">
       <h2 className="flex text-2xl mb-6">
         <span className="font-extrabold text-white">+med</span>
         <span className="font-extrabold text-blue-400">fit</span>
       </h2>
-      <div className="flex flex-col text-white gap-6">
-        <div className=" flex gap-3 justify-between items-center">
-          <div className="flex gap-3 justify-center items-center">
+      <div className="flex flex-col text-white gap-3">
+        <div className=" flex gap-3 justify-between items-center cursor-pointer hover:bg-[#4210c0] px-8 py-3" onClick={handleShowProfile}>
+          <button className="flex gap-3 justify-center items-center" >
             <img src={Profile} alt="icon" />
             <h3>Profile</h3>
-          </div>
+          </button>
           <div>
             <img src={RightArrow} alt="right arrow" />
           </div>
         </div>
-        <div className=" flex gap-3 justify-between items-center">
+        <div className=" flex gap-3 justify-between items-center cursor-pointer hover:bg-[#4210c0] px-8 py-3">
           <div className="flex gap-3 justify-center items-center">
             <img src={Doctor} alt="icon" />
             <h3>Doctors</h3>
@@ -31,7 +36,7 @@ const Sidebar = () => {
             <img src={RightArrow} alt="right arrow" />
           </div>
         </div>
-        <div className=" flex gap-3 justify-between items-center">
+        <div className=" flex gap-3 justify-between items-center cursor-pointer hover:bg-[#4210c0] px-8 py-3">
           <div className="flex gap-3 justify-center items-center">
             <img src={Instructions} alt="icon" />
             <h3>Instructions</h3>
@@ -40,7 +45,7 @@ const Sidebar = () => {
             <img src={RightArrow} alt="right arrow" />
           </div>
         </div>
-        <div className=" flex gap-3 justify-between items-center">
+        <div className=" flex gap-3 justify-between items-center cursor-pointer hover:bg-[#4210c0] px-8 py-3">
           <div className="flex gap-3 justify-center items-center">
             <img src={ChatHistory} alt="icon" />
             <h3>Chat History</h3>
