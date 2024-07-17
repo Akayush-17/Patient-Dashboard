@@ -4,7 +4,7 @@ import PatientMetrics from "./PatientMetrics";
 import Benefits from "./Benefits";
 
 
-const PatientDashboard = () => {
+const PatientDashboard = ({handleLogout}) => {
   return (
     <div className=" w-full overflow-hidden">
       <div className="bg-white p-3 flex justify-between w-full">
@@ -12,6 +12,7 @@ const PatientDashboard = () => {
         <div className="flex items-center gap-4">
           <img src={Profile} className="rounded-full" alt="profile" />
           <h5>Super Sick</h5>
+          <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-3">Logout</button>
         </div>
       </div>
       <div className="rounded-md bg-white my-4 p-4 mx-5">

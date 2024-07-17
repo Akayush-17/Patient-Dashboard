@@ -19,7 +19,12 @@ exports.login = async (req, res) => {
       return res.status(401).send('Invalid credentials');
     }
 
-    const token = jwt.sign({ patientId: patient._id }, process.env.JWT_SECRET);
+    const token = jwt.sign(
+      { patientId: patient._id },
+      process.env.JWT_SECRET,
+      { expiresIn: '1h' } 
+    );
+
     res.json({ token, patientId: patient._id }); 
   } catch (error) {
     console.error('Error during login:', error);

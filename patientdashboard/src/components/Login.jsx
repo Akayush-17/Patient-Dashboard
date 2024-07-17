@@ -3,7 +3,7 @@ import loginimg from "../assets/loginimage.png";
 import { useNavigate } from "react-router-dom";
 
 
-const Login = ({ setIsLoggedIn, handletoken,handleuserId }) => {
+const Login = ({ handleToken }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,9 +22,9 @@ const Login = ({ setIsLoggedIn, handletoken,handleuserId }) => {
       });
       if (response.ok) {
         const data= await response.json();
-        handletoken(data.token);
-        handleuserId(data.patientId)
-        setIsLoggedIn(true);
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('userId', data.patientId);
+        handleToken(data.token, data.patientId);
         navigate("/dashboard");
       } else {
         const errorData = await response.json();
