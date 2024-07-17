@@ -6,7 +6,13 @@ const Signup = () => {
     const navigate = useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
+    const [gender, setGender] = useState("");
+    const [address, setAddress] = useState("");
+    const [relative, setRelative] = useState("");
+    const [blood, setBlood] = useState("");
+    const [dob, setDob] = useState("")
     const [password, setPassword] = useState("");
+    const [age, setAge] = useState("");
     const [error, setError] = useState("");
 
 
@@ -23,7 +29,7 @@ const Signup = () => {
                 headers:{
                     "Content-Type":"application/json",
                 },
-                body: JSON.stringify({name, email, password}),
+                body: JSON.stringify({name, email, gender, address, relative, blood, dob,password,age }),
             });
             if (response.ok){
                 
@@ -39,22 +45,26 @@ const Signup = () => {
        
       };
   return (
-    <section className="bg-gray-100 min-h-screen flex box-border justify-center items-center">
-      <div className="bg-[#5dc4e6] rounded-2xl flex max-w-3xl p-5 items-center">
-        <div className="md:w-1/2 px-8">
+    <section className="bg-gray-100 min-h-screen flex box-border justify-center items-center px-2 md:px-0 py-6 md:py-0">
+      <div className="bg-[#5dc4e6] rounded-2xl flex max-w-4xl p-5 items-center">
+        <div className="md:w-1/2 px-4">
           <h2 className="font-bold text-3xl text-[#002D74]">Sign Up</h2>
           <p className="text-sm mt-4 text-[#002D74]">
             Create an account to enjoy our services.
           </p>
 
           <form onSubmit={handleSignup} className="flex flex-col gap-4">
+            <div className="grid md:grid-cols-2 grid-cols-1 justify-center items-center gap-2">
+
+            
             <input
-              className="p-2 mt-8 rounded-xl border"
+              className="p-2 mt-4 rounded-xl border"
               type="text"
               name="name"
               placeholder="Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              required
             />
             <input
               className="p-2 mt-4 rounded-xl border"
@@ -63,7 +73,64 @@ const Signup = () => {
               placeholder="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
+             <input
+              className="p-2 mt-4 rounded-xl border"
+              type="text"
+              name="gender"
+              placeholder="Enter gender"
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+              required
+            />
+            <input
+              className="p-2 mt-4 rounded-xl border"
+              type="text"
+              name="age"
+              placeholder="Enter age"
+              value={age}
+              onChange={(e) => setAge(e.target.value)}
+              required
+            />
+             <input
+              className="p-2 mt-4 rounded-xl border"
+              type="text"
+              name="address"
+              placeholder="Enter Address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              required
+            />
+            
+            <input
+              className="p-2 mt-4 rounded-xl border"
+              type="text"
+              name="blood"
+              placeholder="Enter Blood Group"
+              value={blood}
+              onChange={(e) => setBlood(e.target.value)}
+              required
+            />
+             <input
+              className="p-2 mt-4 rounded-xl border"
+              type="text"
+              name="dob"
+              placeholder="Enter Date of Birth"
+              value={dob}
+              onChange={(e) => setDob(e.target.value)}
+              required
+            />
+             <input
+              className="p-2 mt-4 rounded-xl border"
+              type="text"
+              name="relative"
+              placeholder="Enter Relative's Name"
+              value={relative}
+              onChange={(e) => setRelative(e.target.value)}
+              required
+            />
+            </div>
             <div className="relative">
               <input
                 className="p-2 rounded-xl border w-full"
@@ -73,6 +140,7 @@ const Signup = () => {
                 placeholder="Password"
                 value={password}
                 onChange={(e)=> setPassword(e.target.value)}
+                required
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -116,7 +184,7 @@ const Signup = () => {
         </div>
         <div className="md:block hidden w-1/2">
           <img
-            className="rounded-2xl max-h-[1600px]"
+            className="rounded-2xl max-h-[1200px]"
             src={signupimg}
             alt="signup form image"
           />

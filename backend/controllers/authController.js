@@ -4,9 +4,9 @@ const Patient = require('../models/Patient');
 require('dotenv').config();
 
 exports.register = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, gender, blood,age,address, relative, dob } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
-  const patient = new Patient({ name, email, password: hashedPassword });
+  const patient = new Patient({ name, email,gender,blood,age,address,relative,dob, password: hashedPassword });
   await patient.save();
   res.status(201).send('Patient registered');
 };

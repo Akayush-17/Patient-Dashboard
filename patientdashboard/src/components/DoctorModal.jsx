@@ -1,33 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Close from '../assets/align-right-svgrepo-com.svg'
-const DoctorModal = ({ token, setShowDoctors }) => {
-  const [profile, setProfile] = useState(null);
-  console.log(token);
+const DoctorModal = ({ data, setShowDoctors }) => {
 
-  useEffect(() => {
-    const fetchProfile = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/api/profile", {
-          headers: {
-            Authorization: `${token}`,
-          },
-        });
-        if (response.ok) {
-          const data = await response.json();
-          setProfile(data);
-        } else {
-          throw new Error("Error fetching profile");
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    if (token) {
-      fetchProfile();
-    }
-  }, [token]);
 
-  if (!token) {
+  if (!data) {
     return <p>Please log in to view Linked Doctors</p>;
   }
 
@@ -43,11 +19,11 @@ const DoctorModal = ({ token, setShowDoctors }) => {
         <img src={Close} alt="close"/>
         </div>
       </div>
-      {profile ? (
+      {data ? (
         <div>
-          {profile.linkedDoctors.length > 0 ? (
+          {data.linkedDoctors.length > 0 ? (
             <ul>
-              {profile.linkedDoctors.map((doctor) => (
+              {data.linkedDoctors.map((doctor) => (
                 <li key={doctor._id}>
                   {doctor.name} - {doctor.specialization}
                 </li>

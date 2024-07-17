@@ -1,17 +1,17 @@
 import React from "react";
-import Profile from "../assets/profile-svgrepo-com.svg";
+import Profile from "../assets/images (1).jpg";
 import PatientMetrics from "./PatientMetrics";
 import Benefits from "./Benefits";
 
 
-const PatientDashboard = ({handleLogout}) => {
+const PatientDashboard = ({handleLogout, data}) => {
   return (
     <div className=" w-full overflow-hidden">
       <div className="bg-white p-3 flex justify-between w-full">
         <h1 className="text-2xl font-bold">Patient Dashboard</h1>
         <div className="flex items-center gap-4">
-          <img src={Profile} className="rounded-full" alt="profile" />
-          <h5>Super Sick</h5>
+          <img src={Profile} className="rounded-full h-11 w-11 bg-contain" alt="profile" />
+          <h5>{data.name}</h5>
           <button onClick={handleLogout} className=" text-white bg-red-500 hover:bg-red-600 rounded-md px-2 py-2">Logout</button>
         </div>
       </div>
@@ -26,31 +26,31 @@ const PatientDashboard = ({handleLogout}) => {
           </div>
           <div className="w-full">
             <div className="flex flex-col gap-4 ">
-              <h4 className="font-bold text-lg">Super Sick</h4>
+              <h4 className="font-bold text-lg">Welcome, {data.name}</h4>
               <div className="grid grid-cols-3 grid-rows-2 gap-6 w-full justify-between">
                 <div>
-                  <h4 className="font-semibold text-base">Birth</h4>
-                  <h4 className="font-normal text-base text-gray-300">xyz</h4>
+                  <h4 className="font-semibold text-base">Date of Birth</h4>
+                  <h4 className="font-normal text-base text-gray-500">{data.dob}</h4>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-base">Birth</h4>
-                  <h4 className="font-normal text-base text-gray-300">xyz</h4>
+                  <h4 className="font-semibold text-base">Gender</h4>
+                  <h4 className="font-normal text-base text-gray-500">{data.gender}</h4>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-base">Birth</h4>
-                  <h4 className="font-normal text-base text-gray-300">xyz</h4>
+                  <h4 className="font-semibold text-base">Address</h4>
+                  <h4 className="font-normal text-base text-gray-500">{data.address}</h4>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-base">Birth</h4>
-                  <h4 className="font-normal text-base text-gray-300">xyz</h4>
+                  <h4 className="font-semibold text-base">Blood Group</h4>
+                  <h4 className="font-normal text-base text-gray-500">{data.blood}</h4>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-base">Birth</h4>
-                  <h4 className="font-normal text-base text-gray-300">xyz</h4>
+                  <h4 className="font-semibold text-base">Relative Name</h4>
+                  <h4 className="font-normal text-base text-gray-500">{data.relative}</h4>
                 </div>
                 <div>
-                  <h4 className="font-semibold text-base">Birth</h4>
-                  <h4 className="font-normal text-base text-gray-300">xyz</h4>
+                  <h4 className="font-semibold text-base">Patient Age</h4>
+                  <h4 className="font-normal text-base text-gray-500">{data.age}</h4>
                 </div>
               </div>
             </div>
