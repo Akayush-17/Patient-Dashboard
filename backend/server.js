@@ -7,7 +7,9 @@ const bodyParser = require('body-parser');
 const authRoutes = require('./routes/authRoutes');
 const interactionRoutes = require('./routes/InteractionRoutes');
 const doctorRoutes = require('./routes/doctorRoutes');
-const patientRoutes = require('./routes/patientRoutes'); // Add this line
+const patientRoutes = require('./routes/patientRoutes'); 
+const chatRoutes = require('./routes/chatRoutes');
+
 require('dotenv').config();
 
 const app = express();
@@ -41,7 +43,8 @@ app.use(session({
 app.use('/api/auth', authRoutes);
 app.use('/api', interactionRoutes);
 app.use('/api/doctors', doctorRoutes);
-app.use('/api/patients', patientRoutes); // Add this line
+app.use('/api/patients', patientRoutes); 
+app.use('/api/chats', chatRoutes);
 
 const PORT = process.env.PORT || 3000;
 

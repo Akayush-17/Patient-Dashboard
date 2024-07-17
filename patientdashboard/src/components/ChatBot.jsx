@@ -17,7 +17,7 @@ const Chatbot = ({ token }) => {
 
     try {
       const response = await axios.post(
-        'http://localhost:3000/api/chatbot', // Replace with your chatbot API endpoint
+        'http://localhost:3000/api/chatbot', 
         { query },
         {
           headers: {
