@@ -12,7 +12,7 @@ const PatientDashboard = ({handleLogout}) => {
         <div className="flex items-center gap-4">
           <img src={Profile} className="rounded-full" alt="profile" />
           <h5>Super Sick</h5>
-          <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-3">Logout</button>
+          <button onClick={handleLogout} className=" text-white bg-red-500 hover:bg-red-600 rounded-md px-2 py-2">Logout</button>
         </div>
       </div>
       <div className="rounded-md bg-white my-4 p-4 mx-5">

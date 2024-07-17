@@ -75,7 +75,7 @@ const Chatbot = ({ token, userId }) => {
               Powered by +medfit
             </p>
           </div>
-          <div className="overflow-y-scroll h-[480px] overflow-x-hidden ">
+          <div className="overflow-y-scroll h-[480px] overflow-x-hidden custom-scrollbar">
             <div
               className="pr-4  pb-4"
               style={{ minWidth: "100%", display: "table" }}
