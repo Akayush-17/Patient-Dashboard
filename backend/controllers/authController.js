@@ -13,10 +13,16 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
-  const patient = await Patient.findOne({ email });
-  if (!patient || !await bcrypt.compare(password, patient.password)) {
-    return res.status(401).send('Invalid credentials');
+  try {
+    const patient = await Patient.findOne({ email });
+    if (!patient || !await bcrypt.compare(password, patient.password)) {
+      return res.status(401).send('Invalid credentials');
+    }
+
+    const token = jwt.sign({ patientId: patient._id }, process.env.JWT_SECRET);
+    res.json({ token, patientId: patient._id }); 
+  } catch (error) {
+    console.error('Error during login:', error);
+    res.status(500).send('Server error');
   }
-  const token = jwt.sign({ patientId: patient._id }, process.env.JWT_SECRET);
-  res.json({ token });
 };

@@ -3,7 +3,7 @@ import loginimg from "../assets/loginimage.png";
 import { useNavigate } from "react-router-dom";
 
 
-const Login = ({ setIsLoggedIn, handletoken }) => {
+const Login = ({ setIsLoggedIn, handletoken,handleuserId }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,8 +22,8 @@ const Login = ({ setIsLoggedIn, handletoken }) => {
       });
       if (response.ok) {
         const data= await response.json();
-        console.log(data)
         handletoken(data.token);
+        handleuserId(data.patientId)
         setIsLoggedIn(true);
         navigate("/dashboard");
       } else {

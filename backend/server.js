@@ -9,6 +9,7 @@ const interactionRoutes = require('./routes/InteractionRoutes');
 const doctorRoutes = require('./routes/doctorRoutes');
 const patientRoutes = require('./routes/patientRoutes'); 
 const chatRoutes = require('./routes/chatRoutes');
+const { GoogleGenerativeAI } = require('@google/generative-ai');
 
 require('dotenv').config();
 
@@ -39,12 +40,14 @@ app.use(session({
   store: MongoStore.create({ mongoUrl: process.env.MONGO_URI })
 }));
 
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api', interactionRoutes);
 app.use('/api/doctors', doctorRoutes);
 app.use('/api/patients', patientRoutes); 
-app.use('/api/chats', chatRoutes);
+app.use('/chat', chatRoutes);
 
 const PORT = process.env.PORT || 3000;
 

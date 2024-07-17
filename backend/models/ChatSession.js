@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
 
 const chatSessionSchema = new mongoose.Schema({
-    Session:{
-        type:Array,
-        required:true,
+    userId: {
+        type: String,
+        required: true
+    },
+    sessionData: {
+        type: Array,
+        required: true
     }
-})
+});
 
-module.exports = mongoose.model('ChatSession', chatSessionSchema)
+module.exports = mongoose.model('ChatSession', chatSessionSchema);

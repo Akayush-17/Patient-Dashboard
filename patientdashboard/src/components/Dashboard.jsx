@@ -6,10 +6,11 @@ import DoctorModal from "./DoctorModal";
 import InteractionModal from "./InteractionModal";
 import Chatbot from "./ChatBot";
 
-const Dashboard = ({ token }) => {
+const Dashboard = ({ token,userId }) => {
   const [showProfile, setShowProfile] = useState(false)
   const [showDoctor, setShowDoctors] = useState(false)
   const [showInteraction, setShowInteraction] = useState(false)
+
 
   return (
     <div className="flex w-full">
@@ -27,7 +28,7 @@ const Dashboard = ({ token }) => {
          <InteractionModal setShowInteraction={setShowInteraction} token={token}/>
         </div>
         <PatientDashboard />
-        <Chatbot/>
+        <Chatbot userId={userId}/>
       </div>
     </div>
   );
