@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Close from '../assets/align-right-svgrepo-com.svg';
-
+import Profile from "../assets/medbot_platforms_logo.jpg";
 const ChatHistoryModal = ({ userId, setShowChats }) => {
   const [chat, setChat] = useState(null);
 
@@ -30,22 +30,29 @@ const ChatHistoryModal = ({ userId, setShowChats }) => {
   };
 
   return (
-    <div className="bg-white h-full p-4">
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-xl font-bold">Chat History</h1>
-        <div className="cursor-pointer" onClick={handleHideChat}>
+    <div className=" rounded-md relative h-[100vh] bg-white shadow-lg">
+    <div className="bg-blue-500 rounded-t-md h-28 w-full p-5 gap-5 flex flex-col">
+      <div className="flex justify-between items-center">
+        <h1 className="text-xl font-semibold text-white">Chat Bot Interaction</h1>
+        <div className=" cursor-pointer" onClick={handleHideChat}>
           <img src={Close} alt="close" />
         </div>
       </div>
-      <div className="overflow-y-scroll h-[480px] overflow-x-hidden custom-scrollbar">
+      <img
+        src={Profile}
+        className="rounded-full h-20 w-20 bg-contain"
+        alt="profile"
+      />
+    </div>
+      <div className="overflow-y-scroll h-[80vh] overflow-x-hidden custom-scrollbar p-5 mt-10">
         {chat ? (
           chat.map((session, index) => (
             <div key={index} className="mb-4">
-              <h2 className="font-semibold mb-2">Session ID: {session.sessionId}</h2>
-              <div className="bg-gray-100 p-2 rounded">
+             
+              <div className="bg-gray-100 p-3 rounded gap-4 flex flex-col">
                 {session.messages.map((message, idx) => (
-                  <div key={idx} className={`p-2 ${message.role === 'user' ? 'bg-blue-100' : 'bg-green-100'} rounded mb-2`}>
-                    <p><strong>{message.role === 'user' ? 'You' : 'Model'}:</strong> {message.text}</p>
+                  <div key={idx} className={`p-2 ${message.role === 'user' ? 'bg-blue-100' : 'bg-green-100'} rounded mb-2 gap-2 flex flex-col`}>
+                    <p><strong>{message.role === 'user' ? 'You' : 'Bot'}:</strong> {message.text}</p>
                     <p className="text-xs text-gray-500">{new Date(message.timestamp).toLocaleString()}</p>
                   </div>
                 ))}

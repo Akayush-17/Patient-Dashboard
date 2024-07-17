@@ -25,6 +25,7 @@ const Login = ({ handleToken }) => {
         localStorage.setItem('token', data.token);
         localStorage.setItem('userId', data.patientId);
         handleToken(data.token, data.patientId);
+        console.log(data.token)
         navigate("/dashboard");
       } else {
         const errorData = await response.json();
@@ -55,6 +56,7 @@ const Login = ({ handleToken }) => {
               placeholder="Email"
               value={email}
               onChange={(e)=> setEmail(e.target.value)}
+              required
             />
             <div className="relative">
               <input
@@ -65,6 +67,7 @@ const Login = ({ handleToken }) => {
                 placeholder="Password"
                 value={password}
                 onChange={(e)=> setPassword(e.target.value)}
+                required
               />
               <svg
                 xmlns="http://www.w3.org/2000/svg"

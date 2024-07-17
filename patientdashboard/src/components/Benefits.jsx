@@ -10,20 +10,20 @@ const Benefits = () => {
         <div className=" bg-[#e4a66d] p-2 flex-col flex items-center rounded-md">
           <img src={Image} className="h-20 w-20" alt="graph" />
           <div className=" flex flex-col ">
-            <h4 className="font-bold text-3xl text-white">120/80</h4>
+            <h4 className="font-bold text-3xl text-white">Chat with Bot</h4>
           </div>
         </div>
         <div className=" bg-[#3de1ec] p-2 rounded-md flex-col flex items-center">
           <img src={Green} className="h-20 w-20" alt="graph" />
           <div className="gap-1 flex flex-col py-2">
-            <h4 className="font-bold text-3xl text-white">80</h4>
+            <h4 className="font-bold text-3xl text-white">Laboratory Test</h4>
           </div>
         </div>
         <div className=" bg-[#ec55c6] p-2 rounded-md  flex-col flex items-center">
           <img src={Pink} className="h-20 w-20" alt="graph" />
           <div className="gap-1 flex flex-col py-2">
             
-            <h4 className="font-bold text-3xl text-white">92</h4>
+            <h4 className="font-bold text-3xl text-white">Appointment</h4>
      
           </div>
         </div>
