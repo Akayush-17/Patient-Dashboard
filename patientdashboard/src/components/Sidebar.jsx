@@ -27,7 +27,7 @@ const Sidebar = ({setShowProfile, setShowDoctors, setShowInteraction}) => {
 
   return (
     <div className=" bg-gradient-to-t from-[#7b27eb] to-[#5616f5] h-[100vh] py-6 ">
-      <h2 className="flex text-2xl mb-6">
+      <h2 className="flex text-2xl mb-6 px-8">
         <span className="font-extrabold text-white">+med</span>
         <span className="font-extrabold text-blue-400">fit</span>
       </h2>

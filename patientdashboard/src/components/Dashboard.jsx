@@ -4,6 +4,7 @@ import PatientDashboard from "./PatientDashboard";
 import UserProfile from "./UserProfile";
 import DoctorModal from "./DoctorModal";
 import InteractionModal from "./InteractionModal";
+import Chatbot from "./ChatBot";
 
 const Dashboard = ({ token }) => {
   const [showProfile, setShowProfile] = useState(false)
@@ -26,6 +27,7 @@ const Dashboard = ({ token }) => {
          <InteractionModal setShowInteraction={setShowInteraction} token={token}/>
         </div>
         <PatientDashboard />
+        <Chatbot/>
       </div>
     </div>
   );
