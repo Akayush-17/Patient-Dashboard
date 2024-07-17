@@ -1,14 +1,33 @@
 const mongoose = require('mongoose');
 
-const chatSessionSchema = new mongoose.Schema({
+const messageSchema = new mongoose.Schema({
+    role: {
+        type: String,
+        required: true
+    },
+    text: {
+        type: String,
+        required: true
+    },
+    timestamp: {
+        type: Date,
+        default: Date.now
+    }
+});
+
+const chatMessageSchema = new mongoose.Schema({
     userId: {
         type: String,
         required: true
     },
-    sessionData: {
-        type: Array,
+    sessionId: {
+        type: String,
         required: true
-    }
+    },
+    messages: [messageSchema]
 });
 
-module.exports = mongoose.model('ChatSession', chatSessionSchema);
+const ChatSession = mongoose.model('ChatSession', chatMessageSchema);
+const ChatMessage = mongoose.model('ChatMessage', chatMessageSchema);
+
+module.exports = { ChatSession, ChatMessage };

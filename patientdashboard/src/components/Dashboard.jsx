@@ -36,7 +36,7 @@ const Dashboard = ({ token,userId, handleLogout }) => {
          <InteractionModal setShowInteraction={setShowInteraction} token={token}/>
         </div>
         <PatientDashboard handleLogout={handleLogout} />
-        <Chatbot userId={userId}/>
+        <Chatbot token={token} userId={userId}/>
       </div>
     </div>
   );

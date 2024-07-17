@@ -18,7 +18,7 @@ const Chatbot = ({ token, userId }) => {
         { message: query, userId },
         {
           headers: {
-            Authorization: `${token}`,
+            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
           },
         }
