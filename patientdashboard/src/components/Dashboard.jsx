@@ -50,8 +50,8 @@ const Dashboard = ({ token, userId, handleLogout }) => {
   }
 
   return (
-    <div className="flex w-full">
-      <div className="w-1/5">
+    <div className="flex w-full lg:h-[100vh]">
+      <div className="lg:w-1/5">
         <Sidebar
           setShowProfile={setShowProfile}
           setShowChats={setShowChats}
@@ -59,24 +59,24 @@ const Dashboard = ({ token, userId, handleLogout }) => {
           setShowDoctors={setShowDoctors}
         />
       </div>
-      <div className="w-4/5 bg-gray-200 ">
+      <div className="lg:w-4/5 w-full bg-gray-200 ">
         <div
           className={`absolute right-0 top-0 h-full transform translate duration-800 ease-in  ${
-            showProfile ? "w-1/4 block" : "w-0 hidden"
+            showProfile ? "lg:w-1/4 w-full block" : "w-0 hidden"
           }`}
         >
           <UserProfile setShowProfile={setShowProfile} data={data} />
         </div>
         <div
           className={`absolute right-0 top-0 h-full transform translate duration-800 ease-in  ${
-            showDoctor ? "w-1/4 block" : "w-0 hidden"
+            showDoctor ? "lg:w-1/4 w-full block" : "w-0 hidden"
           }`}
         >
           <DoctorModal setShowDoctors={setShowDoctors} data={data} />
         </div>
         <div
           className={`absolute right-0 top-0 h-full transform translate duration-800 ease-in  ${
-            showInteraction ? "w-1/3 block" : "w-0 hidden"
+            showInteraction ? "lg:w-1/3 w-full block" : "w-0 hidden"
           }`}
         >
           <InteractionModal
@@ -86,7 +86,7 @@ const Dashboard = ({ token, userId, handleLogout }) => {
         </div>
         <div
           className={`absolute right-0 top-0 h-full transform translate duration-500 ease-in  ${
-            showChats ? "w-1/2 block" : "w-0 hidden"
+            showChats ? "lg:w-1/2 w-full block" : "w-0 hidden"
           }`}
         >
           <ChatHistoryModal userId={userId} setShowChats={setShowChats} />

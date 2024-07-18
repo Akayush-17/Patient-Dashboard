@@ -67,7 +67,7 @@ const Chatbot = ({ token, userId }) => {
           style={{
             boxShadow: "0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgb(0 0 0 / 0.05)",
           }}
-          className="fixed bottom-[calc(4rem+1.5rem)] right-0 mr-4 bg-white p-6 rounded-lg border border-[#e5e7eb] w-[440px] h-[634px] "
+          className="fixed bottom-[calc(4rem+1.5rem)] right-0 mr-4 bg-white p-6 rounded-lg border border-[#e5e7eb] md:w-[440px] md:h-[634px] h-[470px] "
         >
           <div className="flex flex-col space-y-1.5 pb-6">
             <h2 className="font-semibold text-lg tracking-tight">Chatbot</h2>
@@ -75,7 +75,7 @@ const Chatbot = ({ token, userId }) => {
               Powered by +medfit
             </p>
           </div>
-          <div className="overflow-y-scroll h-[480px] overflow-x-hidden custom-scrollbar">
+          <div className="overflow-y-scroll md:h-[480px] h-[310px] overflow-x-hidden custom-scrollbar">
             <div
               className="pr-4  pb-4"
               style={{ minWidth: "100%", display: "table" }}

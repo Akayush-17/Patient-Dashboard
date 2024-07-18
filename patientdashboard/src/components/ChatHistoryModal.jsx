@@ -44,7 +44,7 @@ const ChatHistoryModal = ({ userId, setShowChats }) => {
         alt="profile"
       />
     </div>
-      <div className="overflow-y-scroll h-[80vh] overflow-x-hidden custom-scrollbar p-5 mt-10">
+      <div className="overflow-y-scroll lg:h-[80vh] h-[75vh] overflow-x-hidden custom-scrollbar p-5 mt-10">
         {chat ? (
           chat.map((session, index) => (
             <div key={index} className="mb-4">

@@ -6,7 +6,7 @@ import Pink from "../assets/calendar.png";
 const Benefits = () => {
   return (
     <div className="px-5">
-      <div className="grid grid-cols-4 py-3 gap-4">
+      <div className="grid lg:grid-cols-4 grid-cols-1 py-3 gap-4">
         <div className=" bg-[#e4a66d] p-2 flex-col flex items-center rounded-md">
           <img src={Image} className="h-20 w-20" alt="graph" />
           <div className=" flex flex-col ">

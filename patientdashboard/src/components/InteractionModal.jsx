@@ -51,7 +51,7 @@ const InteractionModal = ({ token, setShowInteraction }) => {
         />
       </div>
       {interaction ? (
-        <div className="p-5 h-[80vh] overflow-scroll overflow-x-hidden custom-scrollbar mt-10">
+        <div className="p-5 lg:h-[80vh] h-[75vh] overflow-scroll overflow-x-hidden custom-scrollbar mt-10">
           {interaction.length > 0 ? (
             <ul className="flex flex-col gap-8">
               {interaction.map((interaction) => (

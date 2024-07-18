@@ -6,7 +6,7 @@ import Green from '../assets/green.png'
 
 const PatientMetrics = () => {
   return (
-    <div className="grid grid-cols-4 py-6 gap-4">
+    <div className="grid lg:grid-cols-4 grid-cols-1 py-6 gap-4">
           <div className=" bg-[#f7f8fa] p-5 rounded-md">
             <div className="gap-1 flex flex-col py-2">
               <h4 className="font-semibold text-base text-gray-800">
