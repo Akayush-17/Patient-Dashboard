@@ -13,7 +13,7 @@ const Login = ({ handleToken }) => {
     event.preventDefault();
     setError("");
     try {
-      const response = await fetch("https://patient-dashboard-nty4.vercel.app/api/auth/login", {
+      const response = await fetch("https://patient-dashboard-bjsf.onrender.com/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

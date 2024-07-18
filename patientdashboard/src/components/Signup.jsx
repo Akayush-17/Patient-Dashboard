@@ -24,7 +24,7 @@ const Signup = () => {
         event.preventDefault();
         setError("");
         try {
-            const response =await fetch("https://patient-dashboard-nty4.vercel.app/api/auth/register", {
+            const response =await fetch("https://patient-dashboard-bjsf.onrender.com/api/auth/register", {
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json",

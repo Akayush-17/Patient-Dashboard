@@ -14,7 +14,7 @@ const Chatbot = ({ token, userId }) => {
 
     try {
       const response = await axios.post(
-        "https://patient-dashboard-nty4.vercel.app/chat/send-message",
+        "https://patient-dashboard-bjsf.onrender.com/chat/send-message",
         { message: query, userId },
         {
           headers: {
