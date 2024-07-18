@@ -8,7 +8,12 @@ This project is built with React.js, TailwindCSS for the frontend, and Node.js w
 
 https://patient-dashboard-nty4.vercel.app/login
 
-Frontend Hosted on Vercel
+<b>TEST Credentials</b> <br>
+Email: ram@gmail.com <br>
+Password: test<br>
+<br>
+
+Frontend Hosted on Vercel<br>
 Backend Hosted on Render
 
 ### API Endpoints
