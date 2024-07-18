@@ -7,7 +7,7 @@ const ChatHistoryModal = ({ userId, setShowChats }) => {
   useEffect(() => {
     const fetchChat = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/chat/chat-history/${userId}`);
+        const response = await fetch(`https://patient-dashboard-nty4.vercel.app/chat/chat-history/${userId}`);
         if (response.ok) {
           const data = await response.json();
           setChat(data);

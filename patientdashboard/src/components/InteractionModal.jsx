@@ -7,7 +7,7 @@ const InteractionModal = ({ token, setShowInteraction }) => {
   useEffect(() => {
     const fetchInteraction = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/interactions", {
+        const response = await fetch("https://patient-dashboard-nty4.vercel.app/api/interactions", {
           headers: {
             Authorization: `${token}`,
           },

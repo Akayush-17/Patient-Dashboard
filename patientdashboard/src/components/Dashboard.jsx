@@ -19,7 +19,7 @@ const Dashboard = ({ token, userId, handleLogout }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/profile", {
+        const response = await fetch("https://patient-dashboard-nty4.vercel.app/api/profile", {
           headers: {
             Authorization: `${token}`,
           },
