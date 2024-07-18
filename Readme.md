@@ -97,8 +97,7 @@ cd backend
 
 Install dependencies:
 
-bash
-Copy code
+
 npm install
 
 Set up environment variables:
@@ -107,27 +106,21 @@ Create a .env file in the backend directory.
 Add the necessary environment variables (e.g., MongoDB connection strings, Gemini API keys, JWT_SECRET, SESSION_SECRET ).
 Run the backend server:
 
-bash
-Copy code
+
 npm run start
 
-bash
-Copy code
 Frontend Setup
 Navigate to the frontend directory:
 
-bash
-Copy code
+
 cd patientdashboard
 Install dependencies:
 
-bash
-Copy code
+
 npm install
 Run the frontend application:
 
-bash
-Copy code
+
 npm start
 ```
 
